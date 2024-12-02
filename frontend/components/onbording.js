@@ -1,13 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import Onboarding from './components/onbording'
 
-const App = () => {
+const onbording = () => {
   return (
     <View>
-       <Onboarding/>
+      <Text>onbording</Text>
     </View>
   )
 }
 
-export default App
+export default onbording
