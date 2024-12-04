@@ -24,11 +24,11 @@ const AllerMateScreen = () => {
     <View style={styles.container}>
       {/* Images du haut */}
       <Image
-        source={require('./assets/image 1.png')}
+        source={require('../assets/image 1.png')}
         style={styles.topLeftImage}
       />
       <Image
-        source={require('./assets/image 2.png')}
+        source={require('../assets/image 2.png')}
         style={styles.topRightImage}
       />
 
@@ -40,7 +40,7 @@ const AllerMateScreen = () => {
         </View>
         <View style={styles.backgroundSquare} />
         <Image
-          source={require('./assets/1906.i203.016.allergy_symptoms-removebg-preview.png')}
+          source={require('../assets/1906.i203.016.allergy_symptoms-removebg-preview.png')}
           style={styles.mainImage}
         />
       </View>
@@ -66,18 +66,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#3366CC',
-    paddingHorizontal: width * 0.05,
-    paddingVertical: height * 0.05,
+    paddingHorizontal: width * 0.1,
+    paddingVertical: height * 0.6,
   },
   topLeftImage: {
-    width: width * 0.4,
+    width: width * 0.3,
     height: height * 0.2,
     position: 'absolute',
     top: height * 0.05,
     left: 5,
   },
   topRightImage: {
-    width: width * 0.4,
+    width: width * 0.5,
     height: height * 0.2,
     position: 'absolute',
     top: height * 0.05,
