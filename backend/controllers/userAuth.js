@@ -52,4 +52,34 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+// Get User
+const getUser = async (req, res) => {
+  const userEmail = req.params.email;
+
+  try {
+    const user = await User.findOne({ email: userEmail });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+ // Update User
+const updateUser = async (req, res) => {
+  const userEmail = req.params.email;
+  const updates = req.body;
+
+  try {
+    const user = await User.findOneAndUpdate({ email: userEmail }, updates, { new: true });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ message: "User updated successfully", user });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+module.exports = { registerUser, loginUser, getUser, updateUser };
