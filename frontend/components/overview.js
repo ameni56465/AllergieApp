@@ -3,11 +3,28 @@ import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Platform } from "
 
 const { width, height } = Dimensions.get("window");
 
-export default function overview() {
+export default function Overview() {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Overview</Text>
+    <View
+      style={[
+        styles.container,
+        { paddingBottom: Platform.OS === "ios" ? height * 0.1 : height * 0.08 },
+      ]}
+    >
+      <View
+        style={[
+          styles.header,
+          { paddingTop: height * 0.03, marginBottom: height * 0.04 },
+        ]}
+      >
+        <Text
+          style={[
+            styles.title,
+            { fontSize: width < 350 ? 16 : width < 600 ? 18 : 20 },
+          ]}
+        >
+          Overview
+        </Text>
       </View>
       <View style={styles.grid}>
         <TouchableOpacity style={[styles.card, styles.blue]}>
@@ -35,10 +52,8 @@ export default function overview() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "flex-start", // Align content to top
     alignItems: "center",
-    backgroundColor: "#f8f9fd",
+    backgroundColor: "white",
     paddingBottom: Platform.OS === "ios" ? 120 : 100, // Space for tab bar
   },
   header: {
@@ -53,6 +68,7 @@ const styles = StyleSheet.create({
     fontSize: width < 350 ? 16 : width < 600 ? 18 : 20, // Larger title
     color: "#577CEF", // Title color
     fontWeight: "normal", // No bold
+    marginTop: 50,
   },
   grid: {
     width: "100%",
@@ -63,9 +79,14 @@ const styles = StyleSheet.create({
   },
   card: {
     width: width - 100 < 350 ? "38%" : width - 100 < 600 ? "42%" : "30%", // Slightly reduced card width
-    height: width - 100 < 350 ? width * 0.35 : width - 100 < 600 ? width * 0.4 : width * 0.3, // Adjust height proportionally to width
-    padding: 8, // Reduced padding for a more compact layout
-    borderRadius: 6, // Slightly smaller border radius
+    height:
+      width - 100 < 350
+        ? width * 0.35
+        : width - 100 < 600
+        ? width * 0.4
+        : width * 0.3, 
+    padding: 8, 
+    borderRadius: 6, 
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 12, // Increased vertical margin for more space between rows
@@ -74,7 +95,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 }, // Smaller shadow offset
     shadowOpacity: 0.2, // Lighter shadow opacity
     shadowRadius: 5, // Smaller shadow radius
-    elevation: 3, // Lighter elevation for Android shadow
+    elevation: 5, // Lighter elevation for Android shadow
   },
   cardText: {
     color: "white",
