@@ -1,12 +1,24 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';  // Import NavigationContainer
+import { createStackNavigator } from '@react-navigation/stack';
+import SignIn from './components/SignIn'; 
+import Login from './components/Login';
+// import Onbording from './components/onbording'
+ import Overview from './components/Overview'
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <View>
-      <Text>helloooo there</Text>
-    </View>
-  )
-}
+    <NavigationContainer>  
+      <Stack.Navigator initialRouteName="SignIn" screenOptions={{ headerShown: false }}>
 
-export default App
+        <Stack.Screen name="SignIn" component={SignIn}  screenOptions={{ headerShown: false }}/>
+        <Stack.Screen name="Login" component={Login} screenOptions={{ headerShown: false }} />
+        <Stack.Screen name="Overview" component={Overview} />
+       
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;

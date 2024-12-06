@@ -4,7 +4,7 @@ const cors = require("cors");
 const userRoutes = require("./routes/userAuth");
 
 const app = express();
-const port = 5000;
+const port = 8000;
 
 // Middleware
 app.use(express.json());
@@ -12,7 +12,9 @@ app.use(cors());
 
 // Database connection
 mongoose
-  .connect("mongodb://localhost:27017/allergie")
+  // .connect("mongodb://localhost:27017/allergie")
+  .connect("mongodb+srv://fellyecomproject:TpgsyX6iReNElwvg@cluster0.2xspppw.mongodb.net/PMIProject?retryWrites=true&w=majority")
+ 
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
