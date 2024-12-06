@@ -37,7 +37,7 @@ const Login = ({ navigation }) => {
 
       if (response.ok) {
         Alert.alert('Success', 'Login successful!');
-        navigation.navigate('Overview'); // Navigate to Overview screen
+        navigation.navigate('Overview'); 
       } else {
         Alert.alert('Error', data.message || 'Invalid credentials');
       }
