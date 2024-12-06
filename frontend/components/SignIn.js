@@ -128,15 +128,7 @@ const styles = StyleSheet.create({
     marginLeft: responsiveWidth(5),
     fontFamily: 'Inter',
   },
-  // title: {
-  //   fontSize: 20,
-  //   fontWeight: 'bold',
-  //   color: '#577CEF',
-  //   marginBottom: 30,
-  //   marginTop:100,
-  //   marginLeft: 15,
-  //   fontFamily: 'Inter',
-  // },
+  
   input: {
     height: 50,
     borderWidth: 1,
@@ -199,7 +191,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 2 },
+    
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,

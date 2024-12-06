@@ -14,6 +14,7 @@ const Login = ({ navigation }) => {
   };
 
   // Handle login
+  console.log(email)
   const handleLogin = async () => {
     if (!email || !password) {
       Alert.alert('Error', 'Please fill in all fields.');
