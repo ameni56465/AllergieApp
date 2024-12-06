@@ -3,47 +3,29 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions } from 'rea
 
 const { width, height } = Dimensions.get('window');
 
-const AllerMateScreen = () => {
-  const getButtonStyles = (size = 2) => {
-    const buttonHeight = size * 50;
-    return {
-      backgroundColor: '#ffffff',
-      paddingHorizontal: 20,
-      paddingVertical: buttonHeight * 0.1,
-      borderRadius: 25,
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.2,
-      shadowRadius: 3,
-      alignItems: 'center',
-      justifyContent: 'center',
-    };
+const AllerMateScreen = ({ navigation }) => {
+  const handleGetStarted = () => {
+    navigation.navigate('Login'); // Navigates to the "Login" screen
   };
 
   return (
     <View style={styles.container}>
-      {/* Images du haut */}
-      <Image
-        source={require('../assets/image 1.png')}
-        style={styles.topLeftImage}
-      />
-      <Image
-        source={require('../assets/image 2.png')}
-        style={styles.topRightImage}
-      />
+      {/* Images at the top */}
+      <Image source={require('../assets/image 1.png')} style={styles.topLeftImage} />
+      <Image source={require('../assets/image 2.png')} style={styles.topRightImage} />
 
+      {/* Main Content */}
       <View style={styles.imageContainer}>
-  <View style={styles.outerBackgroundSquare}>
-    <Text style={styles.outerSquareText}>Welcome to</Text>
-    <Text style={styles.outerSquareBrand}>AllerMate</Text>
-  </View>
-  <View style={styles.backgroundSquare} />
-  <Image
-    source={require('../assets/1906.i203.016.allergy_symptoms-removebg-preview.png')}
-    style={styles.mainImage}
-  />
-</View>
-
+        <View style={styles.outerBackgroundSquare}>
+          <Text style={styles.outerSquareText}>Welcome to</Text>
+          <Text style={styles.outerSquareBrand}>AllerMate</Text>
+        </View>
+        <View style={styles.backgroundSquare} />
+        <Image
+          source={require('../assets/1906.i203.016.allergy_symptoms-removebg-preview.png')}
+          style={styles.mainImage}
+        />
+      </View>
 
       {/* Footer */}
       <View style={styles.footerContainer}>
@@ -53,7 +35,7 @@ const AllerMateScreen = () => {
           <Text style={styles.footerText}>
             Track Your Allergies, Learn About Allergies, Emergency Guidance
           </Text>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
             <Text style={styles.buttonText}>Get Started</Text>
           </TouchableOpacity>
         </View>
@@ -89,7 +71,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   outerBackgroundSquare: {
-    position: 'absolute', 
+    position: 'absolute',
     width: width * 0.8,
     height: height * 0.15,
     backgroundColor: 'white',
@@ -98,29 +80,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     padding: 15,
-    top:-155
+    top: -155,
   },
   mainImage: {
     width: width * 0.6,
     height: height * 0.4,
     resizeMode: 'contain',
-    zIndex: 2,  
+    zIndex: 2,
     marginLeft: 147,
-    top: -105,  
+    top: -105,
   },
-  
   outerSquareText: {
     fontSize: width * 0.05,
     color: '#577CEF',
     fontWeight: 'bold',
-    marginLeft:10,
+    marginLeft: 10,
   },
   outerSquareBrand: {
     fontSize: width * 0.08,
     color: '#577CEF',
     fontWeight: 'bold',
-    
-    
   },
   backgroundSquare: {
     position: 'absolute',
@@ -132,14 +111,13 @@ const styles = StyleSheet.create({
     right: width * 0.05,
     top: height * 0.2,
     zIndex: 1,
-    marginRight:-65,
-    marginTop:-370
+    marginRight: -65,
+    marginTop: -370,
   },
-
   footerContainer: {
     marginTop: height * 0.05,
     position: 'relative',
-    top: 50
+    top: 50,
   },
   footerBackgroundSquare: {
     width: '100%',
@@ -160,18 +138,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#D9D9D9',
     marginBottom: 10,
     borderRadius: 20,
-    top:-200,
+    top: -200,
   },
   footerText: {
     fontSize: width * 0.04,
     color: 'white',
     textAlign: 'center',
-    fontWeight:'bold',
-    zIndex:5,
-    marginTop:-180,
-    marginBottom:50,
-    marginLeft:10,
-    marginRight:10
+    fontWeight: 'bold',
+    zIndex: 5,
+    marginTop: -180,
+    marginBottom: 50,
+    marginLeft: 10,
+    marginRight: 10,
   },
   button: {
     backgroundColor: '#ffffff',
@@ -179,15 +157,13 @@ const styles = StyleSheet.create({
     paddingVertical: height * 0.03,
     borderRadius: 25,
     shadowColor: 'black',
-    shadowOffset: { width: 0, height: 8 }, // Drop shadow below button
-    shadowOpacity: 0.9, // Moderate shadow visibility
-    shadowRadius: 6, // Slightly blurred for natural look
-    elevation: 6, // For Android drop shadow
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.9,
+    shadowRadius: 6,
+    elevation: 6,
     top: -20,
-    zIndex: 2, // Ensures the button is above other elements
+    zIndex: 2,
   },
-  
-  
   buttonText: {
     color: '#5279F2',
     fontSize: width * 0.042,
@@ -197,7 +173,6 @@ const styles = StyleSheet.create({
     left:28,
     top:10
   }
-  
 });
 
 export default AllerMateScreen;
