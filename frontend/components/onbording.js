@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     padding: 15,
-    top:-150
+    top:-155
   },
   mainImage: {
     width: width * 0.6,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   footerBackgroundSquare: {
     width: '100%',
     height: height * 0.3,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    backgroundColor: '#8aa7de',
     bottom: 0,
     zIndex: 0,
     borderRadius: 10,
@@ -166,6 +166,7 @@ const styles = StyleSheet.create({
     fontSize: width * 0.04,
     color: 'white',
     textAlign: 'center',
+    fontWeight:'bold',
     zIndex:5,
     marginTop:-180,
     marginBottom:50,
@@ -177,13 +178,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: width * 0.19,
     paddingVertical: height * 0.03,
     borderRadius: 25,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    top:-20,
-    zIndex: 2,  // Make sure button is above text
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 8 }, // Drop shadow below button
+    shadowOpacity: 0.9, // Moderate shadow visibility
+    shadowRadius: 6, // Slightly blurred for natural look
+    elevation: 6, // For Android drop shadow
+    top: -20,
+    zIndex: 2, // Ensures the button is above other elements
   },
+  
   
   buttonText: {
     color: '#5279F2',
