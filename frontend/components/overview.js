@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   cardText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: width < 350 ? 10 : width < 600 ? 12 : 14, // Adjusted font size for text inside cards
+    fontSize: width < 350 ? 10 : width < 600 ? 12 : 14,
     textAlign: "center", // Centered text
   },
   blue: { backgroundColor: "#577CEF" },

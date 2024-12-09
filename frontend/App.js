@@ -4,8 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SignIn from './components/SignIn'; 
 import Login from './components/Login';
 import Onbording from './components/onbording';
-import Overview from './components/Overview';
-
+import Overview from './components/overview'
 
 const Stack = createStackNavigator();
 
