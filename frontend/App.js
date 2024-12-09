@@ -22,4 +22,14 @@ const App = () => {
   );
 };
 
+function Overview({  navigation }) {
+  return (
+    <>
+      <Overscreen/>
+
+      <Tabbar navigation={navigation} />
+    </>
+  );
+}
+
 export default App;
