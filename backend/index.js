@@ -2,9 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoutes = require("./routes/userAuth");
+const symptomRoutes = require("./routes/symptom");
 
 const app = express();
-const port = 8000;
+const port = 5000;
 
 // Middleware
 app.use(express.json());
@@ -12,13 +13,14 @@ app.use(cors());
 
 // Database connection
 mongoose
-  .connect("mongodb+srv://fellyecomproject:TpgsyX6iReNElwvg@cluster0.2xspppw.mongodb.net/PMIProject?retryWrites=true&w=majority")
+  .connect("mongodb://localhost:27017/allergie")
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
 
 // Routes
 app.use("/api/users", userRoutes);
+app.use("/api/symptoms", symptomRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
