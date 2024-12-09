@@ -1,5 +1,5 @@
 import React from 'react';
-const Overview = () => {
+const On = () => {
     return (
         <View>
             <Text>Welcome to the Overview Screen!</Text>
@@ -7,4 +7,4 @@ const Overview = () => {
     );
 };
 
-export default Overview;
+export default On;
