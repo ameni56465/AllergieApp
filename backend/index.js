@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoutes = require("./routes/userAuth");
-
+const allergyRoutes = require("./routes/allergyRoutes");
 const app = express();
 const port = 8000;
 
@@ -19,6 +19,7 @@ mongoose
 
 // Routes
 app.use("/api/users", userRoutes);
+app.use("/api/allergies", allergyRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
