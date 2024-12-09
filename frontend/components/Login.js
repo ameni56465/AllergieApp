@@ -30,7 +30,7 @@ const Login = ({ navigation }) => {
     
   
     try {
-      const response = await fetch('http://192.168.1.14:8000/api/users/login', {
+      const response = await fetch('http://192.168.1.9:8000/api/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -121,12 +121,13 @@ const Login = ({ navigation }) => {
 
       <Text
         style={styles.linkText}
-        onPress={() => navigation.navigate('SignIn')}
+    
       >
-        if you don't have an account 
+        if you don't have an account
       </Text>
-      <Text style={styles.linkText1}>you can <Text style={{color:'#577CEF'}}>Register here !</Text></Text>
-
+      <Text style={styles.linkText1}>
+        you can <Text style={styles.registerText} onPress={() => navigation.navigate('SignIn')}>Register here!</Text>
+      </Text>
     </View>
   );
 };
@@ -241,9 +242,22 @@ const styles = StyleSheet.create({
     height: responsiveWidth(8),
     margin:15  },
   
-   linkText: { color: '#646C7A', textAlign: 'center', marginTop:25,fontSize: 16,},
-   linkText1: { color: '#646C7A', textAlign: 'center',fontSize: 16,},
-
+    linkText: {
+      color: '#646C7A',
+      textAlign: 'center',
+      marginTop: width * 0.05, // 5% of screen width
+      fontSize: width * 0.04, // 4% of screen width for scaling font size
+    },
+    linkText1: {
+      color: '#646C7A',
+      textAlign: 'center',
+      fontSize: width * 0.04, // Same scaling as linkText
+      marginTop: width * 0.01, // Add vertical spacing between lines
+    },
+    registerText: {
+      color: '#577CEF',
+      fontWeight: 'bold',
+    },
 });
 
 export default Login;

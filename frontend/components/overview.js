@@ -53,7 +53,7 @@ export default function Overview() {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     paddingBottom: Platform.OS === "ios" ? 120 : 100, // Space for tab bar
   },
   header: {
