@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-//import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 const SettingsScreen = () => {
   return (
     <ScrollView style={styles.container}>
-      <TouchableOpacity style={styles.backButton}>
-        <Ionicons name="arrow-back" size={24} color="blue" />
-      </TouchableOpacity>
+      <View style={styles.backButtonContainer}>
+        <TouchableOpacity style={styles.backButton}>
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </TouchableOpacity>
+      </View>
       <Text style={styles.header}>Settings</Text>
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Account</Text>
+
+      {/* Account Section */}
+      <Text style={styles.sectionTitle}>Account</Text>
+      <View style={styles.frame}>
         <TouchableOpacity style={styles.item}>
           <Ionicons name="person-outline" size={24} color="black" />
           <Text style={styles.itemText}>Edit profile</Text>
@@ -28,8 +32,10 @@ const SettingsScreen = () => {
           <Text style={styles.itemText}>Privacy</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Cache & cellular</Text>
+
+      {/* Cache & Cellular Section */}
+      <Text style={styles.sectionTitle}>Cache & Cellular</Text>
+      <View style={styles.frame}>
         <TouchableOpacity style={styles.item}>
           <Ionicons name="trash-outline" size={24} color="black" />
           <Text style={styles.itemText}>Free up space</Text>
@@ -39,8 +45,10 @@ const SettingsScreen = () => {
           <Text style={styles.itemText}>Data Saver</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Actions</Text>
+
+      {/* Actions Section */}
+      <Text style={styles.sectionTitle}>Actions</Text>
+      <View style={styles.frame}>
         <TouchableOpacity style={styles.item}>
           <Ionicons name="flag-outline" size={24} color="black" />
           <Text style={styles.itemText}>Report a problem</Text>
@@ -61,31 +69,51 @@ const SettingsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#EDEDED',
     padding: 20,
   },
-  backButton: {
+  backButtonContainer: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#577CEF',
+    padding: 3,
+    borderRadius: 10,
     marginBottom: 20,
+    top: 50,
+  },
+  backButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    marginLeft: 100,
+    color: '#577CEF',
   },
-  section: {
-    marginBottom: 30,
+  frame: {
+    backgroundColor: '#DFDDDB',
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 20,
+    shadowColor: '#DFDDDB',
+    shadowOpacity: 0,
+    shadowRadius: 0,
+    elevation: 3,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+    top:-3,
   },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    borderBottomColor: '#DDD',
   },
   itemText: {
     marginLeft: 15,
