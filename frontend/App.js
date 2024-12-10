@@ -4,7 +4,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SignIn from './components/SignIn'; 
 import Login from './components/Login';
 import Onbording from './components/onbording';
-import Overview from './components/overview'
+import Overview from './components/Overview';
+import ProfileScreen from './components/ProfileScreen';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ const App = () => {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Overview" component={Overview} />
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
