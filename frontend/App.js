@@ -4,9 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SignIn from './components/SignIn'; 
 import Login from './components/Login';
 import Onbording from './components/onbording';
-import Overview from './components/Overview';
-
-
+import Overscreen from './components/overview'
+import Tabbar from './components/tabbar';
+import SettingsScreen  from './components/settings';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -18,9 +18,31 @@ const App = () => {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Overview" component={Overview} />
+        <Stack.Screen name="settings" component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
+
+function Overview({  navigation }) {
+  return (
+    <>
+      <Overscreen/>
+
+      <Tabbar navigation={navigation} />
+    </>
+  );
+}
+
+function Settings({  navigation }) {
+  return (
+    <>
+      <SettingsScreen/>
+
+      <Tabbar navigation={navigation} />
+    </>
+  );
+}
+
 
 export default App;
