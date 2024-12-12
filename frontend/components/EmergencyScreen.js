@@ -57,14 +57,14 @@ const EmergencyScreen = ({ navigation }) => {
   };
 
   const handleRemove = (index) => {
-    setEmergencyData(emergencyData.filter((_, i) => i !== index)); // Remove by index
+    setEmergencyData(emergencyData.filter((_, i) => i !== index)); 
   };
 
   const handleUpdate = (index) => {
     const dataToUpdate = emergencyData[index];
-    setFormData(dataToUpdate); // Pre-fill form with data to be updated
+    setFormData(dataToUpdate); 
     setShowForm(true);
-    setEmergencyData(emergencyData.filter((_, i) => i !== index)); // Remove original entry temporarily
+    setEmergencyData(emergencyData.filter((_, i) => i !== index)); 
   };
 
   return (
@@ -77,7 +77,9 @@ const EmergencyScreen = ({ navigation }) => {
 
       <View style={styles.section}>
         <Text style={styles.title}>Emergency</Text>
-        <Text style={styles.subtitle}>Add your emergency</Text>
+        {emergencyData.length === 0 && (
+          <Text style={styles.subtitle}>Add your emergency</Text>
+        )}
 
         <ScrollView style={styles.dataList}>
           {emergencyData.map((data, index) => (
@@ -178,7 +180,7 @@ const EmergencyScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+   container: {
     flex: 1,
     backgroundColor: '#D3D3D3',
     paddingHorizontal: 20,
@@ -203,12 +205,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   title: {
-    fontSize: 28,
+    fontSize: 22,
     fontWeight: '600',
     color: '#577CEF',
     textAlign: 'center',
     marginBottom: 5,
-    top: -20,
+    top: -15,
   },
   subtitle: {
     fontSize: 30,
@@ -217,23 +219,25 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     top: 90,
   },
-  dataList: {
-    width: '100%',
-    marginTop: 20,
-  },
-  dataContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 8,
-    padding: 15,
-    marginBottom: 15,
-    shadowColor: 'blue',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 6,
-    elevation: 10,
-  },
+dataList: {
+  width: '100%',
+  marginTop: -10, 
+  paddingBottom: 20, 
+},
+dataContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: '#FFFFFF',
+  borderRadius: 8,
+  padding: 15,
+  marginBottom: 15,
+  shadowColor: 'blue',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.3,
+  shadowRadius: 6,
+  elevation: 10,
+  marginTop: 20, 
+},
   imageBox: {
     flex: 1,
     alignItems: 'center',
@@ -244,13 +248,13 @@ infoBox: {
   fontSize: 50, 
   },
 phoneButton: { 
-   flex: 0, // Set flex to 0 to avoid stretching
-   width: 25, // Adjust width for a smaller button
-   height: 25, // Adjust height to match
-   borderRadius: 15, // Half of width/height for a perfect circle
+   flex: 0, 
+   width: 25, 
+   height: 25, 
+   borderRadius: 15, 
    alignItems: 'center',
    justifyContent: 'center',
-   backgroundColor: '#007BFF', // Adjusted color (you can change this)
+   backgroundColor: '#007BFF', 
    left: 7,
    top: -40,
   },
@@ -351,10 +355,10 @@ phoneButton: {
     alignItems: 'center',
   },
   removeButton: {
-   flex: 0, // Set flex to 0 to avoid stretching
-   width: 25, // Adjust width for a smaller button
-   height: 25, // Adjust height to match
-   borderRadius: 15, // Half of width/height for a perfect circle
+   flex: 0, 
+   width: 25, 
+   height: 25, 
+   borderRadius: 15, 
    alignItems: 'center',
    justifyContent: 'center',
    backgroundColor: '#4CAF50', 
