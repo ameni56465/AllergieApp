@@ -1,9 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Platform } from "react-native";
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get("window");
 
+
+
 export default function Overview() {
+  const navigation = useNavigation(); 
+
+  const handleNavigation = (screen) => {
+    navigation.navigate(screen);
+  };
+
   return (
     <View
       style={[
@@ -20,7 +29,7 @@ export default function Overview() {
         <Text
           style={[
             styles.title,
-            { fontSize: width < 350 ? 16 : width < 600 ? 18 : 20 },
+            { fontSize: width < 350 ? 16 : width < 600 ? 18 : 2 },
           ]}
         >
           Overview
@@ -28,7 +37,7 @@ export default function Overview() {
       </View>
       <View style={styles.grid}>
         <TouchableOpacity style={[styles.card, styles.blue]}>
-          <Text style={styles.cardText}>Health Status</Text>
+          <Text style={styles.cardText} >Health Status</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.card, styles.pink]}>
           <Text style={styles.cardText}>Allergy Tracking</Text>
@@ -42,8 +51,8 @@ export default function Overview() {
         <TouchableOpacity style={[styles.card, styles.yellow]}>
           <Text style={styles.cardText}>Vital Signs</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.card, styles.red]}>
-          <Text style={styles.cardText}>Emergency</Text>
+        <TouchableOpacity style={[styles.card, styles.red]} onPress={() => handleNavigation('Emergency')}>
+          <Text style={styles.cardText} >Emergency</Text>
         </TouchableOpacity>
       </View>
     </View>

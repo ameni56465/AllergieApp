@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 const Navbar = () => {
-  const navigation = useNavigation(); // Access navigation prop
+  const navigation = useNavigation(); 
   const route = useRoute(); // Access the current route
   const [currentScreen, setCurrentScreen] = useState(route.name); // Set the initial screen dynamically
 

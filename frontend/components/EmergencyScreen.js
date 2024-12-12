@@ -39,8 +39,8 @@ const EmergencyScreen = ({ navigation }) => {
 
   const getDoctorImage = (gender) => {
     return gender === 'male'
-      ? require('./assets/male_doctor.png')
-      : require('./assets/female_doctor.png');
+      ? require('../assets/male_doctor.png')
+      : require('../assets/female_doctor.png');
   };
 
   const handlePhoneCall = (phoneNumber) => {

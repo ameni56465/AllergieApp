@@ -7,6 +7,8 @@ import Onbording from './components/onbording';
 import Overscreen from './components/overview'
 import Tabbar from './components/tabbar';
 import SettingsScreen  from './components/settings';
+import EmergencyScreen from './components/EmergencyScreen'
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -19,6 +21,7 @@ const App = () => {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Overview" component={Overview} />
         <Stack.Screen name="settings" component={Settings} />
+        <Stack.Screen name="Emergency" component={Emergency} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -28,6 +31,16 @@ function Overview({  navigation }) {
   return (
     <>
       <Overscreen/>
+
+      <Tabbar navigation={navigation} />
+    </>
+  );
+}
+
+function Emergency({  navigation }) {
+  return (
+    <>
+      < EmergencyScreen/>
 
       <Tabbar navigation={navigation} />
     </>
