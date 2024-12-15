@@ -26,16 +26,23 @@ const EmergencyScreen = ({ navigation }) => {
     setFormData({ ...formData, [field]: value });
   };
 
-  const handleSubmit = () => {
-    if (formData.name && formData.number && formData.location && formData.gender) {
-      setEmergencyData([...emergencyData, formData]);
-      setFormData({ name: '', number: '', location: '', gender: '' });
-      setShowForm(false);
-      setFormSubmitted(true);
-    } else {
-      alert('Please fill all fields before submitting');
-    }
-  };
+const handleSubmit = () => {
+  if (formData.name && formData.number && formData.location && formData.gender) {
+    // Append the new data to the existing data list without removing any items
+    setEmergencyData((prevData) => [...prevData, formData]); 
+
+    // Reset the form fields for the next entry
+    setFormData({ name: '', number: '', location: '', gender: '' });
+
+    // Close the form after submitting
+    setShowForm(false);
+
+    // Optionally track form submission state
+    setFormSubmitted(true);
+  } else {
+    alert('Please fill all fields before submitting');
+  }
+};
 
   const getDoctorImage = (gender) => {
     return gender === 'male'
@@ -270,28 +277,27 @@ phoneButton: {
     height: 80,
     borderRadius: 40,
   },
-  addButton: {
+addButton: {
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 10,
-    bottom: 20,
-    right: 20,
-    width: 150,
-    height: 150,
-    borderRadius: 75,
+    width: 100, // Larger width
+    height: 100, // Larger height
+    borderRadius: 50, // Larger border radius for a circular shape
     backgroundColor: 'blue',
-    top: 300,
-    left: 110,
-  },
+    left: '50%', // Horizontally centers the button
+    top: '40%',  // Vertically centers the button
+    transform: [{ translateX: -50 }, { translateY: -50 }], // Adjusts offsets for new size
+},
   addButtonClicked: {
     right: 20,
     backgroundColor: '#577CEF',
-    top: -20,
+    top: 26,
     width: 40,
     height: 40,
     borderRadius: 25,
-    marginLeft: 215,
+    marginLeft: 190,
   },
   formContainer: {
     backgroundColor: '#FFF',
