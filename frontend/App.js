@@ -7,7 +7,7 @@ import Onbording from './components/onbording';
 import Overview from './components/Overview';
 import ProfileScreen from './components/ProfileScreen';
 import Article from './components/Article';
-import Details from './components/Details'
+import Details from './components/Details';
 
 
 const Stack = createStackNavigator();
