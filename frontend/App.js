@@ -6,6 +6,9 @@ import Login from './components/Login';
 import Onbording from './components/onbording';
 import Overview from './components/Overview';
 import ProfileScreen from './components/ProfileScreen';
+import Article from './components/Article';
+import Details from './components/Details'
+
 
 const Stack = createStackNavigator();
 
@@ -17,8 +20,12 @@ const App = () => {
         <Stack.Screen name="Onbording" component={Onbording} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Overview" component={Overview} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Stack.Screen name="Overview" component={Overview} />
+        <Stack.Screen name="Article" component={Article} />
+        <Stack.Screen name="Details" component={Details} />
+       
+       
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -9,21 +9,42 @@ import {
   Alert,
   KeyboardAvoidingView,
   Platform,
-  ScrollView
+  ScrollView,
 } from 'react-native';
-import { launchImageLibrary } from 'react-native-image-picker'; // Import image picker
+import { launchImageLibrary, launchCamera } from 'react-native-image-picker'; // Import both library and camera picker
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
+import Icon from 'react-native-vector-icons/MaterialIcons'; // Importing the camera icon
 
 const ProfileScreen = () => {
   // State for user data
-  const [fullName, setFullName] = useState('imen');
-  const [email, setEmail] = useState('imen@gmail.com');
-  const [age, setAge] = useState('22');
-  const [country, setCountry] = useState('Tunisia');
+  const [fullName, setFullName] = useState(' ');
+  const [email, setEmail] = useState(' ');
+  const [age, setAge] = useState('');
+  const [country, setCountry] = useState(' ');
   const [profilePhoto, setProfilePhoto] = useState(null); // Profile photo state
 
-  // Handle profile photo change
-  const handleProfilePhoto = async () => {
+  // Handle profile photo change (pick from gallery or camera)
+  const handleProfilePhoto = () => {
+    Alert.alert(
+      'Choose an option',
+      'Select a photo from gallery or take a new one',
+      [
+        {
+          text: 'Gallery',
+          onPress: () => pickImageFromGallery(),
+        },
+        {
+          text: 'Camera',
+          onPress: () => pickImageFromCamera(),
+        },
+        { text: 'Cancel', style: 'cancel' },
+      ],
+      { cancelable: true }
+    );
+  };
+
+  // Pick image from the gallery
+  const pickImageFromGallery = async () => {
     const result = await launchImageLibrary({
       mediaType: 'photo',
       maxWidth: 300,
@@ -33,6 +54,20 @@ const ProfileScreen = () => {
 
     if (result.assets) {
       setProfilePhoto(result.assets[0].uri); // Set the chosen photo URI
+    }
+  };
+
+  // Pick image using the camera
+  const pickImageFromCamera = async () => {
+    const result = await launchCamera({
+      mediaType: 'photo',
+      maxWidth: 300,
+      maxHeight: 300,
+      quality: 1,
+    });
+
+    if (result.assets) {
+      setProfilePhoto(result.assets[0].uri); // Set the taken photo URI
     }
   };
 
@@ -58,19 +93,26 @@ const ProfileScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>Profile</Text>
+        {/* Header with back arrow on the left and Profile text in the center */}
+        <View style={styles.headerContainer}>
+          <TouchableOpacity style={styles.arrowButton}>
+            <Icon name="arrow-back" size={24} color="#577CEF" />
+          </TouchableOpacity>
+          <Text style={styles.title}>Profile</Text>
+        </View>
 
-        {/* Profile Photo */}
+        {/* Profile Photo with Camera icon */}
         <TouchableOpacity style={styles.photoContainer} onPress={handleProfilePhoto}>
           <Image
             style={styles.photo}
             source={
               profilePhoto
                 ? { uri: profilePhoto } // Display the chosen photo
-                : { uri: 'https://s1.qwant.com/thumbr/474x316/b/d/f04896edf0c93cc678efab34fc80bb83d7b706446172db2e743fe6a49f96e4/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.U7sVEkIaqVNEJ6Sw5i9aoQHaE8%26pid%3DApi&q=0&b=1&p=0&a=0' } // Use the provided URL
+                : { uri: 'https://s1.qwant.com/thumbr/474x316/b/d/f04896edf0c93cc678efab34fc80bb83d7b706446172db2e743fe6a49f96e4/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.U7sVEkIaqVNEJ6Sw5i9aoQHaE8%26pid%3DApi&q=0&b=1&p=0&a=0' } // Default profile image URL
             }
           />
-          <Text style={styles.editPhoto}>📸 </Text>
+          {/* Camera icon over the profile photo */}
+          <Icon name="camera-alt" size={30} color="#fff" style={styles.cameraIcon} />
         </TouchableOpacity>
 
         {/* Input Fields */}
@@ -79,7 +121,7 @@ const ProfileScreen = () => {
           style={styles.input}
           value={fullName}
           onChangeText={setFullName}
-           placeholderTextColor="#544C4C"
+          placeholderTextColor="#544C4C"
         />
 
         <Text style={styles.label}>Email</Text>
@@ -120,38 +162,56 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    alignItems: 'center', 
+    alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: '#EDEDED',
     padding: responsiveWidth(5),
-    marginTop: responsiveHeight(6)
+    marginTop: responsiveHeight(6),
   },
   title: {
-    fontSize: responsiveFontSize(3), 
+    fontSize: responsiveFontSize(3),
     fontWeight: 'bold',
     color: '#577CEF',
     textAlign: 'center',
     marginBottom: responsiveHeight(3),
+    position: 'absolute', // Makes sure the title stays centered
+    left: 0,
+    right: 0,
+    fontSize: responsiveFontSize(3),
+  },
+  headerContainer: {
+    flexDirection: 'row', // Aligns arrow and title horizontally
+    alignItems: 'center', // Vertically aligns items
+    justifyContent: 'space-between', // Ensures the back arrow is on the left and title is in the center
+    width: '100%', // Full width for the header
+    paddingHorizontal: responsiveWidth(6),
+  },
+  arrowButton: {
+    padding: 5, // Adjust the padding around the arrow button
   },
   photoContainer: {
+    marginTop:25,
     alignItems: 'center',
     marginBottom: responsiveHeight(2),
   },
   photo: {
-    width: responsiveWidth(30), 
-    height: responsiveWidth(30), 
-    borderRadius: 60, 
-    borderWidth: 4, 
+    width: responsiveWidth(30),
+    height: responsiveWidth(30),
+    borderRadius: 60,
+    borderWidth: 4,
     borderColor: '#ddd',
     marginBottom: 0,
   },
-  editPhoto: {
-    marginTop: responsiveHeight(1),
-    color: '#4461F2',
-    fontSize: responsiveFontSize(2), 
+  cameraIcon: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    backgroundColor: '#00000080', // Semi-transparent background
+    borderRadius: 20,
+    padding: 1.5,
   },
   label: {
-    fontSize: responsiveFontSize(2), 
+    fontSize: responsiveFontSize(2),
     color: '#000000',
     marginBottom: 5,
     alignSelf: 'flex-start',

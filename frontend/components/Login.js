@@ -40,7 +40,7 @@ const Login = ({ navigation }) => {
 
       if (response.ok) {
         Alert.alert('Success', 'Login successful!');
-        navigation.navigate('Overview'); 
+        navigation.navigate('ProfileScreen'); 
       } else {
         Alert.alert('Error', data.message || 'Invalid credentials');
       }
