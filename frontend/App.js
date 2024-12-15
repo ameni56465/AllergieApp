@@ -8,6 +8,7 @@ import Overscreen from './components/overview'
 import Tabbar from './components/tabbar';
 import SettingsScreen  from './components/settings';
 import EmergencyScreen from './components/EmergencyScreen'
+import Scan from './components/Scancode'
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,8 @@ const App = () => {
         <Stack.Screen name="Overview" component={Overview} />
         <Stack.Screen name="settings" component={Settings} />
         <Stack.Screen name="Emergency" component={Emergency} />
+        <Stack.Screen name="Scancode" component={Scancode} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -56,6 +59,13 @@ function Settings({  navigation }) {
     </>
   );
 }
+function Scancode({  navigation }) {
+  return (
+    <>
+      < Scan/>
 
+      <Tabbar navigation={navigation} />
+    </>
+  );}
 
 export default App;

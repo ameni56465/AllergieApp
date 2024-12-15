@@ -47,7 +47,7 @@ const Navbar = () => {
       />
       <View style={styles.scanContainer}>
         <View style={styles.circle} />
-        <TouchableOpacity style={styles.scanButton} onPress={() => handleNavigation('Scan')}>
+        <TouchableOpacity style={styles.scanButton} onPress={() => handleNavigation('Scancode')}>
           <Icon name="scan-outline" size={SCAN_ICON_SIZE} color="#000000" />
         </TouchableOpacity>
       </View>
