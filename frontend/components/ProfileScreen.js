@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,20 +8,48 @@ import {
   Image,
   Alert,
   KeyboardAvoidingView,
-  Platform,
   ScrollView,
 } from 'react-native';
-import { launchImageLibrary, launchCamera } from 'react-native-image-picker'; // Import both library and camera picker
+import { launchImageLibrary, launchCamera } from 'react-native-image-picker';
 import { responsiveWidth, responsiveHeight, responsiveFontSize } from 'react-native-responsive-dimensions';
-import Icon from 'react-native-vector-icons/MaterialIcons'; // Importing the camera icon
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ProfileScreen = () => {
   // State for user data
-  const [fullName, setFullName] = useState(' ');
-  const [email, setEmail] = useState(' ');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
-  const [country, setCountry] = useState(' ');
-  const [profilePhoto, setProfilePhoto] = useState(null); // Profile photo state
+  const [country, setCountry] = useState('');
+  const [profilePhoto, setProfilePhoto] = useState(null);
+
+  // Simulate fetching user data from backend or local storage (e.g., Firebase, AsyncStorage)
+  useEffect(() => {
+    const fetchusers = async () => {
+      try {
+        const response = await axios.get("http://192.168.149.206:8000/api/users");
+        setusers(response.data);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des articles :", error);
+      }
+    };
+  
+    // Fetch user data from your API or authentication service
+    // Here, for demonstration, we set mock data
+    const userData = {
+      fullName: 'John Doe',
+      email: 'john.doe@example.com',
+      age: '30',
+      country: 'USA',
+      profilePhoto: 'https://s1.qwant.com/thumbr/474x316/b/d/f04896edf0c93cc678efab34fc80bb83d7b706446172db2e743fe6a49f96e4/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.U7sVEkIaqVNEJ6Sw5i9aoQHaE8%26pid%3DApi&q=0&b=1&p=0&a=0', // URL or local URI
+    };
+
+    // Set the fetched data in state
+    setFullName(userData.fullName);
+    setEmail(userData.email);
+    setAge(userData.age);
+    setCountry(userData.country);
+    setProfilePhoto(userData.profilePhoto);
+  }, []);
 
   // Handle profile photo change (pick from gallery or camera)
   const handleProfilePhoto = () => {
@@ -71,7 +99,7 @@ const ProfileScreen = () => {
     }
   };
 
-  // Handle data submission
+  // Handle data submission (e.g., update profile on the server)
   const handleSubmit = () => {
     if (!fullName || !email || !age || !country) {
       Alert.alert('Error', 'All fields are required!');
@@ -83,15 +111,12 @@ const ProfileScreen = () => {
       return;
     }
 
+    // Here, send the updated data to your backend
     Alert.alert('Success', 'Profile updated successfully!');
-    // Here, make an API call to save the updated profile data
   };
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    >
+    <KeyboardAvoidingView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container}>
         {/* Header with back arrow on the left and Profile text in the center */}
         <View style={styles.headerContainer}>
@@ -111,7 +136,6 @@ const ProfileScreen = () => {
                 : { uri: 'https://s1.qwant.com/thumbr/474x316/b/d/f04896edf0c93cc678efab34fc80bb83d7b706446172db2e743fe6a49f96e4/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.U7sVEkIaqVNEJ6Sw5i9aoQHaE8%26pid%3DApi&q=0&b=1&p=0&a=0' } // Default profile image URL
             }
           />
-          {/* Camera icon over the profile photo */}
           <Icon name="camera-alt" size={30} color="#fff" style={styles.cameraIcon} />
         </TouchableOpacity>
 
@@ -174,23 +198,23 @@ const styles = StyleSheet.create({
     color: '#577CEF',
     textAlign: 'center',
     marginBottom: responsiveHeight(3),
-    position: 'absolute', // Makes sure the title stays centered
+    position: 'absolute',
     left: 0,
     right: 0,
     fontSize: responsiveFontSize(3),
   },
   headerContainer: {
-    flexDirection: 'row', // Aligns arrow and title horizontally
-    alignItems: 'center', // Vertically aligns items
-    justifyContent: 'space-between', // Ensures the back arrow is on the left and title is in the center
-    width: '100%', // Full width for the header
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
     paddingHorizontal: responsiveWidth(6),
   },
   arrowButton: {
-    padding: 5, // Adjust the padding around the arrow button
+    padding: 5,
   },
   photoContainer: {
-    marginTop:25,
+    marginTop: 25,
     alignItems: 'center',
     marginBottom: responsiveHeight(2),
   },
@@ -206,7 +230,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     right: 0,
-    backgroundColor: '#00000080', // Semi-transparent background
+    backgroundColor: '#00000080',
     borderRadius: 20,
     padding: 1.5,
   },

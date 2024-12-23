@@ -23,7 +23,7 @@ export default function Article({ navigation }) {
   // Fonction pour récupérer tous les articles
   const fetchArticles = async () => {
     try {
-      const response = await axios.get("http://192.168.1.15:8000/api/articles");
+      const response = await axios.get("http://192.168.149.206:8000/api/articles");
       setArticles(response.data);
     } catch (error) {
       console.error("Erreur lors de la récupération des articles :", error);
@@ -46,7 +46,7 @@ export default function Article({ navigation }) {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://192.168.1.15:8000/api/articles/search?name=${searchTerm}`
+        `http://192.168.149.206:8000/api/articles/search?name=${searchTerm}`
       );
       setArticles([response.data]); // Met à jour la liste avec les résultats
     } catch (error) {
