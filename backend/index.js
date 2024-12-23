@@ -5,6 +5,8 @@ const userRoutes = require("./routes/userAuth");
 const symptomRoutes = require("./routes/symptom");
 
 const healthStatusRoutes = require("./routes/HealthStatus");
+const articleRoutes = require("./routes/Article");
+
 
 
 const allergyRoutes = require("./routes/allergyRoutes");
@@ -28,6 +30,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/symptoms", symptomRoutes);
 
 app.use("/health-status", healthStatusRoutes);
+app.use("/api/articles", articleRoutes);
 
 app.use("/api/allergies", allergyRoutes);
 
