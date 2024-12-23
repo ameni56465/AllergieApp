@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert,Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { responsiveWidth, responsiveHeight } from 'react-native-responsive-dimensions';
-
+const { width } = Dimensions.get('window');
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +30,7 @@ const Login = ({ navigation }) => {
     
   
     try {
-      const response = await fetch('http://192.168.149.206:8000/api/users/login', {
+      const response = await fetch('http://192.168.1.14:8000/api/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -55,34 +55,34 @@ const Login = ({ navigation }) => {
 
       <TextInput
         style={styles.input}
-        placeholder="Enter your email/fullname"
+        placeholder="Enter your email"
         value={email}
         onChangeText={setEmail}
       />
       <View style={styles.passwordContainer}>
-  <TextInput
-    style={styles.passwordInput}
-    placeholder="Enter your password"
-    secureTextEntry={!passwordVisible} 
-    value={password}
-    onChangeText={setPassword}
-  />
-  <TouchableOpacity
-    style={styles.eyeIcon}
-    onPress={() => setPasswordVisible(!passwordVisible)} // Changer la visibilité
-  >
-    <Icon
-      name={passwordVisible ? 'eye' : 'eye-off'} 
-      size={24} // Taille de l'icône
-      color="#666" // Couleur de l'icône
-    />
-  </TouchableOpacity>
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="••••••••"
+          secureTextEntry={!passwordVisible}
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TouchableOpacity
+          style={styles.eyeIcon}
+          onPress={() => setPasswordVisible(!passwordVisible)}
+        >
+          <Icon
+            name={passwordVisible ? 'eye' : 'eye-off'}
+            size={24}
+            color="#666"
+          />
+        </TouchableOpacity>
 </View>
 
      
-      <Text style={styles.forgotText}>Recover Password ?</Text>
+<Text style={styles.forgotText}>Recover Password ?</Text>
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>LogIn</Text>
+        <Text style={styles.buttonText}>Log In</Text>
       </TouchableOpacity>
 
       <View style={styles.lineContainer}>
@@ -91,16 +91,30 @@ const Login = ({ navigation }) => {
         <View style={styles.line} />
       </View>
 
-
       <View style={styles.cardContainer}>
         <View style={styles.iconCard}>
-          <Image source={{ uri: 'https://s2.qwant.com/thumbr/474x474/5/3/a1ad406273cf1ec7f6b727ab71fc2975951f0f661b764d0c4d17a0cb1c6f5d/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.EhTMbGiYfYzQnWLgjZaoJAHaHa%26pid%3DApi&q=0&b=1&p=0&a=0' }} style={styles.icon} />
+          <Image
+            source={{
+              uri: 'https://s2.qwant.com/thumbr/474x474/5/3/a1ad406273cf1ec7f6b727ab71fc2975951f0f661b764d0c4d17a0cb1c6f5d/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.EhTMbGiYfYzQnWLgjZaoJAHaHa%26pid%3DApi&q=0&b=1&p=0&a=0',
+            }}
+            style={styles.icon}
+          />
         </View>
         <View style={styles.iconCard}>
-          <Image source={{ uri: 'https://s2.qwant.com/thumbr/474x474/5/c/ccb21a50a15aacb3a08df04cf7925930c3a24e8f66738d6a4145c2d92d4565/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.9g4dkKVAUyciOuDI9_vEYQHaHa%26pid%3DApi&q=0&b=1&p=0&a=0' }} style={styles.iconn} />
+          <Image
+            source={{
+              uri: 'https://s2.qwant.com/thumbr/474x474/5/c/ccb21a50a15aacb3a08df04cf7925930c3a24e8f66738d6a4145c2d92d4565/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.9g4dkKVAUyciOuDI9_vEYQHaHa%26pid%3DApi&q=0&b=1&p=0&a=0',
+            }}
+            style={styles.icon}
+          />
         </View>
         <View style={styles.iconCard}>
-          <Image source={{ uri: 'https://s2.qwant.com/thumbr/474x474/e/5/fc52f899ab57b207cd263df3b0bf875c669d0e0917bc2c7720ef10a93f5f11/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.GWN566zsDm2sLaZ11uCo2QHaHa%26pid%3DApi&q=0&b=1&p=0&a=0' }} style={styles.icon} />
+          <Image
+            source={{
+              uri: 'https://s2.qwant.com/thumbr/474x474/e/5/fc52f899ab57b207cd263df3b0bf875c669d0e0917bc2c7720ef10a93f5f11/th.jpg?u=https%3A%2F%2Ftse.mm.bing.net%2Fth%3Fid%3DOIP.GWN566zsDm2sLaZ11uCo2QHaHa%26pid%3DApi&q=0&b=1&p=0&a=0',
+            }}
+            style={styles.icon}
+          />
         </View>
       </View>
     
@@ -109,8 +123,10 @@ const Login = ({ navigation }) => {
         style={styles.linkText}
         onPress={() => navigation.navigate('SignIn')}
       >
-        if you don't have an account                                                                      you can Register here !
+        if you don't have an account 
       </Text>
+      <Text style={styles.linkText1}>you can <Text style={{color:'#577CEF'}}>Register here !</Text></Text>
+
     </View>
   );
 };
@@ -118,7 +134,7 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
  
   container: {flex: 1, backgroundColor: '#EDEDED', padding: 50,paddingHorizontal: responsiveWidth(5), },
-   title: {fontSize: 20,fontWeight: 'bold',color: '#577CEF',marginBottom: 60,marginTop: 80,marginLeft: 15,fontFamily: 'Inter',
+   title: {fontSize: 19,fontWeight: 'bold',color: '#577CEF',marginBottom: 60,marginTop: 80,marginLeft: 15,fontFamily: 'Inter',
   },
   input: {
     height: 50,
@@ -128,71 +144,93 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff80',
     paddingHorizontal: 15,
     marginBottom: 20,
-    marginLeft: 15,
-    marginRight: 15,
     fontSize: 14,
-    shadowColor: '#000',
-    
+    width: '100%', // Full width of the container
+  },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#ffffff10',
+    borderRadius: 10,
+    backgroundColor: '#ffffff80',
+    paddingHorizontal: 15,
+    marginBottom: 15,
+    width: '100%', // Full width of the container
+  },
+  passwordInput: {
+    flex: 1,
+    fontSize: 14,
+  },
+  eyeIcon: {
+    marginLeft: 10,
+  },
+  forgotText: {
+    color: '#C7C7C7',
+    fontSize: 13,
+    textAlign: 'right',
+    marginBottom: 30,
+    marginTop: 10,
+    paddingHorizontal: width * 0.05, 
   },
   button: {
     backgroundColor: '#4461F2',
-    marginLeft: 15,
-    marginRight: 15,
-     height: 50,
-     padding:15,
-     borderRadius: 10,
-    
-    marginTop:15,
+    height: 50,
+    justifyContent: 'center', 
+    alignItems: 'center',
+    borderRadius: 10,
+    marginTop: 15,
     marginBottom: 35,
-    
+    width: '90%',
+    alignSelf: 'center', 
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 20,
-    textAlign: 'center',
-   
-   
+    fontSize: 17,
   },
   orText: {
     marginVertical: 20,
     marginHorizontal:3,
     color: '#667085',
-    fontSize: 16,
+    fontSize: 14,
     
   },
   lineContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    
+    marginVertical: 20,
   },
   line: {
     flex: 1,
     height: 1,
-    marginLeft:15,
-    marginRight:15,
     backgroundColor: '#B0B0B0',
+    marginHorizontal: width * 0.03, // Dynamic spacing
+  },
+  orText: {
+    color: '#667085',
+    fontSize: 14,
+    textAlign: 'center',
   },
   cardContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    margin: 10,
+    justifyContent: 'space-around', // Distribute cards evenly
+    marginVertical: 20,
   },
   iconCard: {
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     padding: 10,
     shadowColor: '#000',
-    
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-    width: 80,
-    height: 58,
-    justifyContent: 'center', // Centre verticalement
-  alignItems: 'center', // Centre horizontalement
-   
+    width: width * 0.2, // 20% of the screen width
+    height: width * 0.12, // Maintain aspect ratio dynamically
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  
+
   icon: {
     width: responsiveWidth(6),
     height: responsiveWidth(6),
@@ -202,32 +240,10 @@ const styles = StyleSheet.create({
     width: responsiveWidth(8),
     height: responsiveWidth(8),
     margin:15  },
-  // Modifications dans le style
-  passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 50, 
-    borderWidth: 1, 
-    borderColor: '#ffffff10',
-    borderRadius: 10,
-    backgroundColor: '#ffffff80',
-    paddingHorizontal: 15,
-    marginBottom: 15,
-    marginLeft: 15,
-    marginRight: 15,
-  },
-  passwordInput: {
-    flex: 1,
-    fontSize: 14,
-  },
-  eyeIcon: {
-    marginLeft: 10, // Espacement entre le champ et l'icône
   
-  
-    },
-  
-  forgotText: { color: '#C7C7C7',fontSize: 14, textAlign: 'right', marginRight: 10 , marginBottom:30,marginTop:10},
-   linkText: { color: '#577CEF', textAlign: 'center', marginTop:25,fontSize: 16,},
+   linkText: { color: '#646C7A', textAlign: 'center', marginTop:25,fontSize: 16,},
+   linkText1: { color: '#646C7A', textAlign: 'center',fontSize: 16,},
+
 });
 
 export default Login;

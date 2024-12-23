@@ -28,7 +28,7 @@ const SignIn = ({ navigation }) => {
     }
 
     try {
-      const response = await fetch('http://192.168.149.206:8000/api/users/register', {
+      const response = await fetch('http://192.168.1.14:8000/api/users/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fullName, email, age, country, password }),
@@ -167,71 +167,6 @@ const styles = StyleSheet.create({
     
     marginTop:15,
     marginBottom: 13,
-    
-  },
-  buttonText: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    textAlign: 'center',
-   
-   
-  },
-  orText: {
-    marginVertical: 20,
-    marginHorizontal:3,
-    color: '#667085',
-    fontSize: 16,
-    
-  },
-  lineContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    
-  },
-  line: {
-    flex: 1,
-    height: 1,
-    marginLeft:15,
-    marginRight:15,
-    backgroundColor: '#B0B0B0',
-  },
-  cardContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    margin: 10,
-    
-   
-    
-  },
-  iconCard: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
-    padding: 10,
-    shadowColor: '#000',
-    
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-    width: 80,
-    height: 58,
-    justifyContent: 'center', // Centre verticalement
-  alignItems: 'center', // Centre horizontalement
-   
-  },
-  
-  icon: {
-    width: responsiveWidth(6),
-    height: responsiveWidth(6),
-    margin:15
-  },
-  iconn: {
-    width: responsiveWidth(8),
-    height: responsiveWidth(8),
-    margin:15  },
-  // Modifications dans le style
-passwordContainer: {
-  flexDirection: 'row',
-  alignItems: 'center',
   height: 50, // Correspond à la hauteur des autres champs
   borderWidth: 1, // Identique aux autres champs
   borderColor: '#ffffff10',
