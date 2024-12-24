@@ -1,8 +1,9 @@
 import React, { useState } from 'react'; 
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
-const SymptomScreen = ({ navigation }) => {
+const SymptomScreen = () => {
   const [showForm, setShowForm] = useState(false);
   const [symptomData, setSymptomData] = useState([]);
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const SymptomScreen = ({ navigation }) => {
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const navigation = useNavigation(); 
 
   const handleAddButtonClick = () => {
     setShowForm(!showForm);
@@ -52,10 +54,14 @@ const SymptomScreen = ({ navigation }) => {
     }
   };
 
+  const handleNavigation = (screen) => {
+    navigation.navigate(screen);
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.backButton} onPress={handleBackButton}>
-        <View style={styles.backCircle}>
+        <View style={styles.backCircle} onPress={() => handleNavigation('Overview')}>
           <Ionicons name="arrow-back" size={24} color="white" />
         </View>
       </TouchableOpacity>
@@ -224,7 +230,7 @@ const styles = StyleSheet.create({
   },
   infoBox: {
     flex: 1,
-    margintop: -30,
+    margintop:-30,
   },
   dataText: {
     fontSize: 16,
@@ -251,7 +257,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 10,
     bottom: 20,
-    right: 130,
+    right: 110,
     width: 100,
     height: 100,
     borderRadius: 50,
@@ -282,7 +288,7 @@ const styles = StyleSheet.create({
     elevation: 10,
     zIndex: 5,
     marginBottom: 20,
-    top: -250,
+    top: -120,
   },
   formTitle: {
     fontSize: 20,

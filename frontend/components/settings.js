@@ -104,18 +104,20 @@ const styles = StyleSheet.create({
     borderRadius: 10, 
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft:40
    
   
   },
   backButton: {
     padding: 4,
+
     
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#577CEF',
-    marginLeft: 70,
+    marginLeft: 100,
   },
   scrollContainer: {
     marginTop: 80,

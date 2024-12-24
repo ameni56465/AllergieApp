@@ -42,7 +42,7 @@ export default function Overview() {
         <TouchableOpacity style={[styles.card, styles.pink]}>
           <Text style={styles.cardText}>Allergy Tracking</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.card, styles.green]}>
+        <TouchableOpacity style={[styles.card, styles.green]} onPress={() => handleNavigation('SymptomScreen')}>
           <Text style={styles.cardText}>Symptoms Tracking</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.card, styles.cyan]}>

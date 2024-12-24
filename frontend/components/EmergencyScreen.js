@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Image, ScrollView, Linking, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
-const EmergencyScreen = ({ navigation }) => {
+const EmergencyScreen = () => {
   const [showForm, setShowForm] = useState(false);
   const [emergencyData, setEmergencyData] = useState([]);
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const EmergencyScreen = ({ navigation }) => {
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [positionChanged, setPositionChanged] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const navigation = useNavigation(); 
 
   const handleAddButtonClick = () => {
     setShowForm(!showForm);
@@ -74,10 +76,13 @@ const handleSubmit = () => {
     setEmergencyData(emergencyData.filter((_, i) => i !== index)); 
   };
 
+  const handleNavigation = (screen) => {
+    navigation.navigate(screen);
+  };
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.backButton} onPress={handleBackButton}>
-        <View style={styles.backCircle}>
+        <View style={styles.backCircle} onPress={() => handleNavigation('Overview')}>
           <Ionicons name="arrow-back" size={24} color="white" />
         </View>
       </TouchableOpacity>
