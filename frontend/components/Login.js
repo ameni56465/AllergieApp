@@ -35,7 +35,7 @@ const Login = ({ navigation }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
-
+console.log(email, password);
       const data = await response.json();
 
       if (response.ok) {
@@ -46,7 +46,7 @@ const Login = ({ navigation }) => {
       }
     } catch (error) {
       Alert.alert('Error', 'Unable to connect to the server.');
-      console.error('Login error:', error);
+      console.error('data:', data);
     }
   };
   return (
