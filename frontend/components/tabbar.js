@@ -41,8 +41,8 @@ const Navbar = () => {
       />
       <NavButton
         name="chatbox-outline"
-        onPress={() => handleNavigation('Messages')}
-        isActive={currentScreen === 'Messages'}
+        onPress={() => handleNavigation('Article')}
+        isActive={currentScreen === 'Article'}
         size={ICON_SIZE}
       />
       <View style={styles.scanContainer}>
@@ -59,8 +59,8 @@ const Navbar = () => {
       />
       <NavButton
         name="person-outline"
-        onPress={() => handleNavigation('Profile')}
-        isActive={currentScreen === 'Profile'}
+        onPress={() => handleNavigation('ProfileScreen')}
+        isActive={currentScreen === 'ProfileScreen'}
         size={ICON_SIZE}
       />
     </View>

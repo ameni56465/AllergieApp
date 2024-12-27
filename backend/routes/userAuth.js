@@ -9,4 +9,3 @@ router.post("/login", loginUser);
 router.get("/:email", getUser);
 router.put("/:email", updateUser);
 module.exports = router;
-

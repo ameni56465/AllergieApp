@@ -10,6 +10,11 @@ import SettingsScreen  from './components/settings';
 import EmergencyScreen from './components/EmergencyScreen'
 import Scan from './components/Scancode'
 import Symptom from './components/SymptomScreen'
+import ProfileScreen from './components/ProfileScreen';
+import Article from './components/Article';
+import Details from './components/Details';
+
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -20,13 +25,16 @@ const App = () => {
         <Stack.Screen name="Onbording" component={Onbording} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         <Stack.Screen name="Overview" component={Overview} />
         <Stack.Screen name="settings" component={Settings} />
         <Stack.Screen name="Emergency" component={Emergency} />
         <Stack.Screen name="Scancode" component={Scancode} />
         <Stack.Screen name="SymptomScreen" component={SymptomScreen} />
-
-
+        <Stack.Screen name="Article" component={Article} />
+        <Stack.Screen name="Details" component={Details} />
+       
+       
       </Stack.Navigator>
     </NavigationContainer>
   );
