@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const{ getAllSymptoms, createSymptom, updateSymptom, deleteSymptom } = require('../controllers/symptom');
 
-router.post('/', createSymptom);
-router.get('/', getAllSymptoms);
-router.put('/:id', updateSymptom);
-router.delete('/:id', deleteSymptom);
+router.post('/add', createSymptom);
+router.get('/getall', getAllSymptoms);
+router.put('/edit/:id', updateSymptom);
+router.delete('/delete/:id', deleteSymptom);
 
 module.exports = router;
